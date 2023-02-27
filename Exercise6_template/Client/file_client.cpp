@@ -95,12 +95,12 @@ int main(int argc, char *argv[])
 	for(;;)
 	{
 		// HER SKER DER NOGET DER FUCKER LORTET OP. 
-		bytesToRecieve = ((fileSize - bytesRecieved) > 1000 ?  1000 : ((fileSize-bytesRecieved)) );
+		bytesToRecieve = ((fileSize - bytesRecieved) > 1000 ?  1000 : (fileSize-bytesRecieved) );
 		if(bytesToRecieve < 1000)
 			{printf("Last package size: %i\n", bytesToRecieve);}
 		
 
-		numBytes = read(sockfd, dataBuf, bytesToRecieve);
+		numBytes = recv(sockfd, dataBuf, bytesToRecieve, MSG_WAITALL);
 
 		bytesRecieved += numBytes;
 		//printf("Bytes recieved: %i\n", bytesRecieved);
