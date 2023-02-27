@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
 	for(;;)
 	{
 		// HER SKER DER NOGET DER FUCKER LORTET OP. 
-		bytesToRecieve = ((fileSize - bytesToRecieve*i++) > 1000 ?  1000 : (1000+(fileSize-bytesToRecieve*i)) );
+		bytesToRecieve = ((fileSize - bytesRecieved) > 1000 ?  1000 : ((fileSize-bytesRecieved)) );
 		if(bytesToRecieve < 1000)
 			{printf("Last package size: %i\n", bytesToRecieve);}
 		
@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
 		numBytes = read(sockfd, dataBuf, bytesToRecieve);
 
 		bytesRecieved += numBytes;
-		printf("Bytes recieved: %i\n", bytesRecieved);
+		//printf("Bytes recieved: %i\n", bytesRecieved);
 		
 		fwrite(dataBuf, 1, numBytes, fp);
 		bzero(dataBuf, DATASIZE);
